@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="525">
-    <Grid>
+    <Grid Margin="10,20">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -14,12 +14,12 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.75*"></RowDefinition>
+            <RowDefinition Height="0.75*"></RowDefinition>
+            <RowDefinition Height="0.75*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3*" Name="comm"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -30,13 +30,13 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="42" 
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" FontSize="42" Margin="6,0"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Доставка товара</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="24" 
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="24" Margin="6,0"
                    FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Bottom">Адрес</TextBlock>
         <Label Target="{Binding ElementName=Subject}" Grid.Row="2" Grid.Column="0" FontSize="18" 
                    FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Субъект</Label>
-        <ComboBox Name="Subject" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,12,35,12" FontSize="16" 
+        <ComboBox Name="Subject" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,5,35,5" FontSize="18" 
                    FontFamily="Arial MS" VerticalAlignment="Center">
             <TextBlock>Москва</TextBlock>
             <TextBlock>Санкт-Петербург</TextBlock>
@@ -45,12 +45,53 @@
         </ComboBox>
         <Label Target="{Binding ElementName=City}" Grid.Row="2" Grid.Column="3" FontSize="18" 
                    FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Город</Label>
-        <ComboBox Name="City" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="6" Margin="10" FontSize="16" 
+        <ComboBox Name="City" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="6" Margin="10,5,10,5" FontSize="18" 
                    FontFamily="Arial MS" VerticalAlignment="Center">
             <TextBlock>Москва</TextBlock>
             <TextBlock>Санкт-Петербург</TextBlock>
-            <TextBlock>Чувашская Республика</TextBlock>
-            <TextBlock>Вологодская область</TextBlock>
+            <TextBlock>Чебоксары</TextBlock>
+            <TextBlock>Вологда</TextBlock>
         </ComboBox>
+        <Label Target="{Binding ElementName=Street}" Grid.Row="3" Grid.Column="0" FontSize="18"
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Улица</Label>
+        <ComboBox Name="Street" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Margin="40,5,10,5" FontSize="18" 
+                   FontFamily="Arial MS" VerticalAlignment="Center">
+            <TextBlock>Профсоюзная</TextBlock>
+            <TextBlock>Ленинградская</TextBlock>
+            <TextBlock>Ленинский проспект</TextBlock>
+            <TextBlock>Авиамоторная</TextBlock>
+            <TextBlock>Вавилова</TextBlock>
+        </ComboBox>
+        <Label Target="{Binding ElementName=House}" Grid.Row="4" Grid.Column="0" FontSize="18"
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">дом</Label>
+        <TextBox Name="House" Grid.Row="4" Grid.Column="1"  FontSize="18" FontFamily="Arial MS" 
+                 HorizontalAlignment="Stretch" Margin="-25,5,35,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
+        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="2" FontSize="18" Margin="-20,5,5,5"
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">корп./стр</Label>
+        <TextBox Name="Corpuse" Grid.Row="4" Grid.Column="3"  FontSize="18" FontFamily="Arial MS" 
+                 HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
+        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="4" FontSize="18" Margin="20,5,5,5"
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">кв.</Label>
+        <TextBox Name="App" Grid.Row="4" Grid.Column="5"  FontSize="18" FontFamily="Arial MS" 
+                 HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
+        <Label Target="{Binding ElementName=TimeInterval}" Grid.Row="5" Grid.Column="0" FontSize="26" Grid.ColumnSpan="4"
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Временной интервал</Label>
+        <RadioButton GroupName="time" Name="first" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18"
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True">С 8:00 до 12:00</RadioButton>
+        <RadioButton GroupName="time" Name="second" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18"
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">С 12:00 до 18:00</RadioButton>
+        <RadioButton GroupName="time" Name="third" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18"
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">С 18:00 до 20:00</RadioButton>
+        <TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4" FontSize="26" 
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Дополнительно</TextBlock>
+        <Label Target="{Binding ElementName=Comment}" Grid.Row="10" Grid.Column="0" FontSize="18" Grid.ColumnSpan="3"
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Bottom">Комментарий</Label>
+        <TextBox Name="Comment" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="6" FontSize="18" SpellCheck.IsEnabled="True" 
+                 Language="ru-ru" FontFamily="Arial MS" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"
+                 VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" BorderBrush="Gray"/>
+        <Button Click="Submit_Form" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" 
+                Margin="5,5,25,5" VerticalAlignment="Stretch" Content="Подтвердить" FontSize="18"/>
+        <Button Click="Reset_Form" Grid.Row="12" Grid.Column="4" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" 
+                Margin="25,5,5,5" VerticalAlignment="Stretch" Content="Отмена" FontSize="18"/>
     </Grid>
 </Window>
