@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="42" 
+                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Доставка товара</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="24" 
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Bottom">Адрес</TextBlock>
+        <Label Target="{Binding ElementName=Subject}" Grid.Row="2" Grid.Column="0" FontSize="18" 
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Субъект</Label>
+        <ComboBox Name="Subject" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,12,35,12" FontSize="16" 
+                   FontFamily="Arial MS" VerticalAlignment="Center">
+            <TextBlock>Москва</TextBlock>
+            <TextBlock>Санкт-Петербург</TextBlock>
+            <TextBlock>Чувашская Республика</TextBlock>
+            <TextBlock>Вологодская область</TextBlock>
+        </ComboBox>
+        <Label Target="{Binding ElementName=City}" Grid.Row="2" Grid.Column="3" FontSize="18" 
+                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Город</Label>
+        <ComboBox Name="City" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="6" Margin="10" FontSize="16" 
+                   FontFamily="Arial MS" VerticalAlignment="Center">
+            <TextBlock>Москва</TextBlock>
+            <TextBlock>Санкт-Петербург</TextBlock>
+            <TextBlock>Чувашская Республика</TextBlock>
+            <TextBlock>Вологодская область</TextBlock>
+        </ComboBox>
     </Grid>
 </Window>
