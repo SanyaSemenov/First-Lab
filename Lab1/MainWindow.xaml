@@ -64,15 +64,15 @@
         </ComboBox>
         <Label Target="{Binding ElementName=House}" Grid.Row="4" Grid.Column="0" FontSize="18"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">дом</Label>
-        <TextBox Name="House" Grid.Row="4" Grid.Column="1"  FontSize="18" FontFamily="Arial MS" 
+        <TextBox Name="House" Grid.Row="4" Grid.Column="1"  FontSize="18" FontFamily="Arial MS" MaxLength="3"
                  HorizontalAlignment="Stretch" Margin="-25,5,35,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
         <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="2" FontSize="18" Margin="-20,5,5,5"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">корп./стр</Label>
-        <TextBox Name="Corpuse" Grid.Row="4" Grid.Column="3"  FontSize="18" FontFamily="Arial MS" 
+        <TextBox Name="Corpuse" Grid.Row="4" Grid.Column="3"  FontSize="18" FontFamily="Arial MS" MaxLength="2"
                  HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
         <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="4" FontSize="18" Margin="20,5,5,5"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">кв.</Label>
-        <TextBox Name="App" Grid.Row="4" Grid.Column="5"  FontSize="18" FontFamily="Arial MS" 
+        <TextBox Name="App" Grid.Row="4" Grid.Column="5"  FontSize="18" FontFamily="Arial MS" MaxLength="3"
                  HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
         <Label Target="{Binding ElementName=TimeInterval}" Grid.Row="5" Grid.Column="0" FontSize="26" Grid.ColumnSpan="4"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Временной интервал</Label>
