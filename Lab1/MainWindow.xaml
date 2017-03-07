@@ -24,10 +24,10 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            <ColumnDefinition Width="1.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+            <ColumnDefinition Width="1.25*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" FontSize="42" Margin="6,0"
@@ -62,18 +62,19 @@
             <TextBlock>Авиамоторная</TextBlock>
             <TextBlock>Вавилова</TextBlock>
         </ComboBox>
-        <Label Target="{Binding ElementName=House}" Grid.Row="4" Grid.Column="0" FontSize="18"
-                   FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">дом</Label>
-        <TextBox Name="House" Grid.Row="4" Grid.Column="1"  FontSize="18" FontFamily="Arial MS" MaxLength="3"
-                 HorizontalAlignment="Stretch" Margin="-25,5,35,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
-        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="2" FontSize="18" Margin="-20,5,5,5"
+        <Label Target="{Binding ElementName=House}" FontSize="18" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+               Margin="0,0,20,0" FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">дом</Label>
+        <TextBox Name="House" FontSize="18" FontFamily="Arial MS" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                 Margin="60,5,10,5" MaxLength="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                 BorderBrush="Gray"/>
+        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="2" FontSize="18" Margin="5,5,5,5"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">корп./стр</Label>
-        <TextBox Name="Corpuse" Grid.Row="4" Grid.Column="3"  FontSize="18" FontFamily="Arial MS" MaxLength="2"
-                 HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
-        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="4" FontSize="18" Margin="20,5,5,5"
+        <TextBox Name="Corpuse" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" FontSize="18" FontFamily="Arial MS" MaxLength="2"
+                 HorizontalAlignment="Stretch" Margin="100,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
+        <Label Target="{Binding ElementName=Corpuse}" Grid.Row="4" Grid.Column="4" FontSize="18" Margin="30,5,5,5"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">кв.</Label>
-        <TextBox Name="App" Grid.Row="4" Grid.Column="5"  FontSize="18" FontFamily="Arial MS" MaxLength="3"
-                 HorizontalAlignment="Stretch" Margin="-10,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
+        <TextBox Name="App" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="6" FontSize="18" FontFamily="Arial MS" MaxLength="3"
+                 HorizontalAlignment="Stretch" Margin="80,5,5,5" VerticalAlignment="Stretch" BorderBrush="Gray"/>
         <Label Target="{Binding ElementName=TimeInterval}" Grid.Row="5" Grid.Column="0" FontSize="26" Grid.ColumnSpan="4"
                    FontFamily="Comic Sans MS" HorizontalAlignment="Left" VerticalAlignment="Center">Временной интервал</Label>
         <RadioButton GroupName="time" Name="first" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18"
@@ -90,8 +91,8 @@
                  Language="ru-ru" FontFamily="Arial MS" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"
                  VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" BorderBrush="Gray"/>
         <Button Click="Submit_Form" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" 
-                Margin="5,5,25,5" VerticalAlignment="Stretch" Content="Подтвердить" FontSize="18"/>
+                Margin="5,5,5,5" VerticalAlignment="Stretch" Content="Подтвердить" FontSize="18"/>
         <Button Click="Reset_Form" Grid.Row="12" Grid.Column="4" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" 
-                Margin="25,5,5,5" VerticalAlignment="Stretch" Content="Отмена" FontSize="18"/>
+                Margin="60,5,5,5" VerticalAlignment="Stretch" Content="Отмена" FontSize="18"/>
     </Grid>
 </Window>
