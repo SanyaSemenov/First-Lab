@@ -24,6 +24,7 @@ namespace Lab1
         public String Comment { get; set; }
 
         public ICommand Confirm { get; set; }
+        public ICommand Reset { get; set; }
 
         private Subject _selectedSubject;
         public Subject SelectedSubject
@@ -74,6 +75,7 @@ namespace Lab1
             this.SelectedCity = this.Subjects[3].Cities[0];
             this.SelectedStreet = this.Subjects[3].Cities[0].Streets[0];
             Confirm = new ConfirmCommand();
+            Reset = new ResetCommand();
         }
         public void FillSubjects()
         {
