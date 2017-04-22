@@ -21,14 +21,10 @@ namespace Lab1
         public void Execute(object parameter)
         {
             var apply = parameter as MainWindowViewModel;
-            if (apply == null)
-            {
-                MessageBox.Show("Форма уже пустая");
-            }
-
             apply.Comment = "";
-            apply.SelectedCity = new City() { Name = "Москва" };
-            apply.SelectedSubject = new Subject() { Name = "Москва" };
+            apply.SelectedSubject = apply.Subjects[3];
+            apply.SelectedCity = apply.Subjects[3].Cities[0];
+            apply.SelectedStreet = apply.Subjects[3].Cities[0].Streets[0];
             apply.HouseNumber = 0;
             apply.HouseBlock = 0;
             apply.Flat = 0;

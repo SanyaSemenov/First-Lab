@@ -31,8 +31,10 @@ namespace Lab1
             get { return _selectedSubject; }
             set
             {
+                if (value == null)
+                    return;
                 _selectedSubject = value;
-                DoPropertyChanged("SelectedCountry");
+                DoPropertyChanged("SelectedSubject");
                 this.Cities = _selectedSubject.Cities;
                 DoPropertyChanged("Cities");
             }
@@ -44,6 +46,8 @@ namespace Lab1
             get { return _selectedCity; }
             set
             {
+                if (value == null)
+                    return;
                 _selectedCity = value;
                 DoPropertyChanged("SelectedCity");
                 this.Streets = _selectedCity.Streets;
@@ -55,14 +59,20 @@ namespace Lab1
         public Street SelectedStreet
         {
             get { return _selectedStreet; }
-            set { _selectedStreet = value; }
+            set
+            {
+                if (value == null)
+                    return;
+                _selectedStreet = value;
+                DoPropertyChanged("SelectedStreet");
+            }
         }
 
         public MainWindowViewModel()
         {
             FillSubjects();
-            this.SelectedCity = this.Subjects[2].Cities[0];
-            this.SelectedStreet = this.Subjects[2].Cities[0].Streets[0];
+            this.SelectedCity = this.Subjects[3].Cities[0];
+            this.SelectedStreet = this.Subjects[3].Cities[0].Streets[0];
             Confirm = new ConfirmCommand();
         }
         public void FillSubjects()

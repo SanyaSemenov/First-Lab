@@ -9,20 +9,19 @@ using System.Windows.Input;
 
 namespace Lab1
 {
-    class ConfirmCommand:ICommand
+    public class ConfirmCommand:ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            //throw new NotImplementedException();
             return true;
         }
 
         public void Execute(object parameter)
         {
             var apply = parameter as MainWindowViewModel;
-            if (apply == null)
+            if (apply.HouseNumber.Equals("0") && apply.HouseBlock.Equals("0") && apply.Flat.Equals("0"))
             {
                 throw new ArgumentNullException("Извините, мы не обрабатываем пустые заявки");
             }
@@ -32,30 +31,7 @@ namespace Lab1
             if (String.IsNullOrWhiteSpace(apply.SelectedCity.Name))
                 throw new ArgumentNullException("Пожалуйста, укажите город");
 
-            /*var flats = vmFilter.Flats.Where(
-                x => x.Area >= vmFilter.AreaMin && x.Area <= vmFilter.AreaMax &&
-                x.Price >= vmFilter.PriceMin && x.Price <= vmFilter.PriceMax &&
-                x.SubwayStation.Equals(vmFilter.SelectedStation.Key, StringComparison.CurrentCultureIgnoreCase)
-                );
-
-            ObservableCollection<FlatViewModel> newElements = new ObservableCollection<FlatViewModel>();
-            foreach (var f in flats)
-            {
-                newElements.Add(f);
-            }
-
-
-            var prop = parameter.GetType().GetProperty("Flats", System.Reflection.BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance);
-            prop.SetValue(parameter, newElements);
-
-            var meth = parameter.GetType().GetMethod("DoPropertyChanged");
-            if (meth != null)
-            {
-                Object[] parameters = new object[] { "Flats" };
-                meth.Invoke(parameter, parameters);
-            }*/
             MessageBox.Show("Заявка отправлена");
-            //throw new NotImplementedException();
         }
     }
 }
