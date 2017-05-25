@@ -1,0 +1,120 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Lab1">
+    <local:BoolToEnumConverter x:Key="BoolToEnum"/>
+    <local:NotEmptyValidationRule x:Key="NotEmptyRule"></local:NotEmptyValidationRule>
+    <Style x:Key="BrownFontColor" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFB8320A"></Setter>
+    </Style>
+    <Style x:Key="Background" TargetType="Grid">
+        <Setter Property="Background" Value="LightYellow"></Setter>
+        <Setter Property="Margin" Value="10"></Setter>
+    </Style>
+    <Style x:Key="MainTitleStyle" TargetType="TextBlock">
+        <Setter Property="Background" Value="#FFE2641B"></Setter>
+        <Setter Property="Foreground" Value="#FFFBE2C4"></Setter>
+        <Setter Property="FontFamily" Value="Raavi"></Setter>
+        <Setter Property="FontSize" Value="52"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+    </Style>
+    <Style x:Key="AdressStyle" TargetType="TextBlock" BasedOn="{StaticResource BrownFontColor}">
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Margin" Value="5,0,0,5"></Setter>
+    </Style>
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+    <Style x:Key="TownLabel" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+        <Setter Property="Margin" Value="10,0,0,0"></Setter>
+    </Style>
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="Foreground" Value="#FF681E08"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="#FFB8320A" BorderThickness="3">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ConfirmStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+        <Style.Setters>
+            <Setter Property="Background" Value="#FFB8320A"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="MinWidth" Value="150"></Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF681E08"></Setter>
+                <Setter Property="BorderBrush" Value="#FF681E08"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="#FF681E08" BorderThickness="3">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ResetSyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+        <Style.Setters>
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Foreground" Value="#FFB8320A"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="MinWidth" Value="100"></Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFB8320A"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="TitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="26"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="#FFC33C09"></Setter>
+        <Setter Property="Background" Value="#FFFFDA98"></Setter>
+    </Style>
+    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+        <Setter Property="BorderBrush" Value="#FF681E08"></Setter>
+        <Setter Property="Foreground" Value="#FF681E08"></Setter>
+    </Style>
+    <Style x:Key="SmallTextBoxStyle" BasedOn="{StaticResource TextBoxStyle}" TargetType="TextBox">
+        <Setter Property="Margin" Value="5"></Setter>
+    </Style>
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+</ResourceDictionary>

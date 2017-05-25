@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace Lab1
 {
-    public class ConfirmCommand:ICommand
+    public class ConfirmCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -21,17 +22,28 @@ namespace Lab1
         public void Execute(object parameter)
         {
             var apply = parameter as MainWindowViewModel;
-            if (apply.HouseNumber.Equals("0") && apply.HouseBlock.Equals("0") && apply.Flat.Equals("0"))
-            {
-                throw new ArgumentNullException("Извините, мы не обрабатываем пустые заявки");
-            }
-            if (String.IsNullOrWhiteSpace(apply.SelectedSubject.Name))
-                throw new ArgumentNullException("Пожалуйста, укажите субъект");
+            if (apply.SelectedSubject == null || String.IsNullOrWhiteSpace(apply.SelectedSubject.Name))
+                MessageBox.Show("Пожалуйста, укажите субъект");
 
-            if (String.IsNullOrWhiteSpace(apply.SelectedCity.Name))
-                throw new ArgumentNullException("Пожалуйста, укажите город");
+            if (apply.SelectedCity == null || String.IsNullOrWhiteSpace(apply.SelectedCity.Name))
+                MessageBox.Show("Пожалуйста, укажите город");
 
-            MessageBox.Show("Заявка отправлена");
+            if (apply.SelectedStreet == null || String.IsNullOrWhiteSpace(apply.SelectedStreet.Name))
+                MessageBox.Show("Пожалуйста, укажите улицу");
+
+            if (apply.HouseNumber == null || apply.HouseNumber == 0)
+                MessageBox.Show("Пжалуйста, укажите номер дома");
+
+            if (apply.HouseBlock == null || apply.HouseBlock == 0)
+                MessageBox.Show("Пожалуйста, укажите номер корпуса (при отсутствии поставьте любое число)");
+
+            if (apply.Flat == null || apply.Flat == 0)
+                MessageBox.Show("Пжалуйста, укажите номер квартиры");
+
+            if (apply.Time != TimeInterval.Daytime && apply.Time != TimeInterval.Morning && apply.Time != TimeInterval.Evening)
+                MessageBox.Show("Пожалуйста, укажите временной интервал");
+
+            else MessageBox.Show("Спасибо! Заявка отправлена");
         }
     }
 }

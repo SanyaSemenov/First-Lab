@@ -6,25 +6,24 @@
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="525">
-    <!--Window.Resources>
-        <local:SubjectToCityConverter x:Key="SubjectToCity"/>
-    </-->
     <Window.Resources>
-        <local:BoolToEnumConverter x:Key="BoolToEnum"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary1.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
-    <Grid>
+    <Grid Style="{StaticResource Background}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"></RowDefinition>
             <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="2.45*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" FontSize="46" FontFamily="Arial MS"
-                   HorizontalAlignment="Left" VerticalAlignment="Top">Доставка товара</TextBlock>
-        <TextBlock Grid.Row="1" FontSize="24" Margin="5,0,0,5" FontFamily="Arial MS" 
-                   HorizontalAlignment="Left" VerticalAlignment="Bottom">Адрес</TextBlock>
+        <TextBlock Grid.Row="0" Style="{StaticResource MainTitleStyle}">Доставка товара</TextBlock>
+        <TextBlock Grid.Row="1" Style="{StaticResource AdressStyle}">Адрес</TextBlock>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"></RowDefinition>
@@ -42,16 +41,13 @@
                     <ColumnDefinition Width="0.7*"></ColumnDefinition>
                     <ColumnDefinition Width="1.4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Target="{Binding ElementName=Subjects}" Grid.Column="0" FontSize="18" 
-                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Субъект</Label>
-                <ComboBox Name="Subjects" Grid.Column="1" Margin="0,0,20,0" FontSize="18" 
-                   FontFamily="Arial MS" VerticalAlignment="Center" ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" 
+                <Label Target="{Binding ElementName=Subjects}" Grid.Column="0" Style="{StaticResource LabelStyle}">Субъект</Label>
+                <ComboBox Name="Subjects" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" Margin="0,0,20,0"
+                          ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" 
                           DisplayMemberPath="Name" SelectedItem="{Binding SelectedSubject}">
                 </ComboBox>
-                <Label Target="{Binding ElementName=City}" Grid.Column="2" FontSize="18" Margin="10,0,0,0"
-                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Город</Label>
-                <ComboBox Name="City" Grid.Column="4" FontSize="18" FontFamily="Arial MS" 
-                          VerticalAlignment="Center" ItemsSource="{Binding Cities}" 
+                <Label Target="{Binding ElementName=City}" Grid.Column="2" Style="{StaticResource TownLabel}">Город</Label>
+                <ComboBox Name="City" Grid.Column="4" Style="{StaticResource ComboBoxStyle}" ItemsSource="{Binding Cities}" 
                           DisplayMemberPath="Name" SelectedItem="{Binding SelectedCity}">
                 </ComboBox>
             </Grid>
@@ -60,11 +56,9 @@
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                     <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Target="{Binding ElementName=Street}" Grid.Column="0" FontSize="18"
-                   FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">Улица</Label>
-                <ComboBox Name="Street" Grid.Column="1" Grid.ColumnSpan="5" FontSize="18" 
-                   FontFamily="Arial MS" VerticalAlignment="Center" ItemsSource="{Binding Streets}" 
-                          DisplayMemberPath="Name" SelectedItem="{Binding SelectedStreet}">
+                <Label Target="{Binding ElementName=Street}" Grid.Column="0" Style="{StaticResource LabelStyle}">Улица</Label>
+                <ComboBox Name="Street" Grid.Column="1" Grid.ColumnSpan="5" Style="{StaticResource ComboBoxStyle}"
+                          ItemsSource="{Binding Streets}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedStreet}">
                 </ComboBox>
             </Grid>
             <Grid Margin="3" Grid.Row="2">
@@ -76,21 +70,32 @@
                     <ColumnDefinition Width="0.9*"/>
                     <ColumnDefinition Width="1.1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Target="{Binding ElementName=House}" FontSize="18" Grid.Column="0"
-                       FontFamily="Arial MS" HorizontalAlignment="Left" VerticalAlignment="Center">дом</Label>
-                <TextBox Name="House" FontSize="18" FontFamily="Arial MS" Grid.Column="1" Margin="5" 
-                         MaxLength="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                         BorderBrush="Black" Text="{Binding HouseNumber}"/>
-                <Label Target="{Binding ElementName=Corpuse}" Grid.Column="2" FontSize="18" 
-                       FontFamily="Arial MS" HorizontalAlignment="Right" VerticalAlignment="Center">корп./стр</Label>
-                <TextBox Name="Corpuse" Grid.Column="3" FontSize="18" FontFamily="Arial MS" MaxLength="2" 
-                         HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"
-                         BorderBrush="Black" Text="{Binding HouseBlock}"/>
-                <Label Target="{Binding ElementName=Corpuse}" Grid.Column="4" FontSize="18"
-                       FontFamily="Arial MS" HorizontalAlignment="Center" VerticalAlignment="Center">кв.</Label>
-                <TextBox Name="App" Grid.Column="5" FontSize="18" FontFamily="Arial MS" MaxLength="3"
-                         HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"
-                         BorderBrush="Black" Text="{Binding Flat}"/>
+                <Label Target="{Binding ElementName=House}" Grid.Column="0" Style="{StaticResource LabelStyle}">дом</Label>
+                <TextBox Name="House" Grid.Column="1" Style="{StaticResource SmallTextBoxStyle}">
+                    <Binding Path="HouseNumber" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:NotEmptyValidationRule></local:NotEmptyValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                <Label Target="{Binding ElementName=Corpuse}" Grid.Column="2"
+                       Style="{StaticResource LabelStyle}" HorizontalAlignment="Right">корп./стр</Label>
+                <TextBox Name="Corpuse" Grid.Column="3" Style="{StaticResource SmallTextBoxStyle}">
+                    <Binding Path="HouseBlock" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:NotEmptyValidationRule></local:NotEmptyValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                <Label Target="{Binding ElementName=Flat}" Grid.Column="4"
+                       Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">кв.</Label>
+                <TextBox Name="Flat" Grid.Column="5" Style="{StaticResource SmallTextBoxStyle}">
+                    <Binding Path="Flat" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:NotEmptyValidationRule></local:NotEmptyValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
             </Grid>
             <Grid Grid.Row="3" Margin="5,5,5,0">
                 <Grid.RowDefinitions>
@@ -99,16 +104,12 @@
                     <RowDefinition Height="0.8*"></RowDefinition>
                     <RowDefinition Height="0.8*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock FontSize="26" HorizontalAlignment="Left" FontFamily="Arial MS"
-                           Grid.Row="0" VerticalAlignment="Center">Временной интервал</TextBlock>
-                <RadioButton GroupName="time" Name="first" Grid.Row="1" FontSize="18" FontFamily="Arial MS" 
-                             HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Time, 
+                <TextBlock Grid.Row="0" Style="{StaticResource TitleStyle}">Временной интервал</TextBlock>
+                <RadioButton GroupName="time" Name="first" Grid.Row="1" Style="{StaticResource RadioButtonStyle}" IsChecked="{Binding Path=Time, 
                     Converter={StaticResource BoolToEnum}, ConverterParameter=Morning}">С 08:00 до 12:00</RadioButton>
-                <RadioButton GroupName="time" Name="second" Grid.Row="2" FontSize="18" FontFamily="Arial MS" 
-                             HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Time, 
+                <RadioButton GroupName="time" Name="second" Grid.Row="2" Style="{StaticResource RadioButtonStyle}" IsChecked="{Binding Path=Time,
                     Converter={StaticResource BoolToEnum}, ConverterParameter=Daytime}">С 12:00 до 18:00</RadioButton>
-                <RadioButton GroupName="time" Name="third" Grid.Row="3" FontSize="18" FontFamily="Arial MS" 
-                             HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Time, 
+                <RadioButton GroupName="time" Name="third" Grid.Row="3" Style="{StaticResource RadioButtonStyle}" IsChecked="{Binding Path=Time, 
                     Converter={StaticResource BoolToEnum}, ConverterParameter=Evening}">С 18:00 до 20:00</RadioButton>
             </Grid>
             <Grid Grid.Row="4" Margin="5,0,5,0">
@@ -117,24 +118,21 @@
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="5*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" FontSize="26" FontFamily="Arial MS" HorizontalAlignment="Left" 
-                           VerticalAlignment="Center">Дополнительно</TextBlock>
+                <TextBlock Grid.Row="0" Style="{StaticResource TitleStyle}">Дополнительно</TextBlock>
                 <Label Target="{Binding ElementName=Comment}" Grid.Row="1" FontSize="14" FontFamily="Arial MS" 
                        HorizontalAlignment="Left" VerticalAlignment="Bottom">Комментарий</Label>
-                <TextBox Name="Comment" Grid.Row="2" FontSize="18" SpellCheck.IsEnabled="True" Language="ru-ru" 
-                         FontFamily="Arial MS" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                         VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" BorderBrush="Black"
-                         Text="{Binding Comment}"/>
+                <TextBox Name="Comment" Grid.Row="2" Style="{StaticResource TextBoxStyle}" SpellCheck.IsEnabled="True" Language="ru-ru"
+                         VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding Comment}"/>
             </Grid>
             <Grid Margin="5,20,5,10" Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Command="{Binding Confirm}" CommandParameter="{Binding}" Grid.Column="0" HorizontalAlignment="Left" 
-                        VerticalAlignment="Stretch" Content="Подтвердить" FontSize="18" Padding="10 0 10 0"/>
-                <Button Command="{Binding Reset}" Grid.Column="1" HorizontalAlignment="Right" 
-                        VerticalAlignment="Stretch" Content="Отмена" FontSize="18"  Padding="10 0 10 0"/>
+                <Button Command="{Binding Confirm, Mode=TwoWay }" CommandParameter="{Binding}" Grid.Column="0"
+                        Content="Подтвердить" Style="{StaticResource ConfirmStyle}"/>
+                <Button Command="{Binding Reset, Mode=TwoWay }" CommandParameter="{Binding}" Grid.Column="1"
+                        Content="Отмена" Style="{StaticResource ResetSyle}"/>
             </Grid>
         </Grid>
     </Grid>

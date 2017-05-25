@@ -17,9 +17,9 @@ namespace Lab1
         public List<Subject> Subjects { get; set; }
         public List<City> Cities { get; set; }
         public List<Street> Streets { get; set; }
-        public Int16 HouseNumber { get; set; }
-        public Byte HouseBlock { get; set; }
-        public Int16 Flat { get; set; }
+        public Int16? HouseNumber { get; set; }
+        public Int16? HouseBlock { get; set; }
+        public Int16? Flat { get; set; }
         public TimeInterval Time { get; set; }
         public String Comment { get; set; }
 
@@ -72,8 +72,6 @@ namespace Lab1
         public MainWindowViewModel()
         {
             FillSubjects();
-            this.SelectedCity = this.Subjects[3].Cities[0];
-            this.SelectedStreet = this.Subjects[3].Cities[0].Streets[0];
             Confirm = new ConfirmCommand();
             Reset = new ResetCommand();
         }
@@ -244,7 +242,8 @@ namespace Lab1
                 }
             };
 
-            this.SelectedSubject = this.Subjects[2];
+            this.SelectedSubject = this.Subjects[3];
+            this.SelectedCity = this.Subjects[3].Cities[0];
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void DoPropertyChanged(String Name)

@@ -23,50 +23,9 @@ namespace Lab1
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private string myDirectory = string.Empty;    //    инициализируем директорию
-        //private XmlDocument MyDoc = null;    //    БД
-        //DataTable Citytable = null;    //    таблицу с данными
-        //DataSet Cities = null;    //    данные
-
         public MainWindow()
         {
-            //myDirectory = Directory.GetCurrentDirectory();        //присваиваем значение текущей директории
-            // ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА
-            //using (StreamReader streamreader = new StreamReader(/*myDirectory + */@"C:\Users\HOOLIGAN\Documents\Visual Studio 2015\Projects\Lab1\Lab1\rocid.xml", System.Text.Encoding.UTF8))
-            //{
-                //Cities = new DataSet();
-                //Cities.ReadXml(streamreader, XmlReadMode.Auto);
-                //Citytable = Cities.Tables[0];    // присваиваем данные БД таблицы
-            //}
             InitializeComponent();
-        }
-
-        private void Submit_Form(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Reset_Form(object sender, RoutedEventArgs e)
-        {
-            /*foreach (Control control in MainWindow.Controls)
-            {
-                if (control is TextBox)
-                {
-                    TextBox textBox = (TextBox)control;
-                    textBox.Text = null;
-                }
-
-                if (control is ComboBox)
-                {
-                    ComboBox comboBox = (ComboBox)control;
-                    if (comboBox.Items.Count > 0)
-                        comboBox.SelectedIndex = 0;
-                }
-
-                first.IsChecked = true;
-                second.IsChecked = false;
-                third.IsChecked = false;
-            }*/
         }
     }
 }
