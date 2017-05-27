@@ -15,6 +15,7 @@
         <Setter Property="Foreground" Value="#FFFBE2C4"></Setter>
         <Setter Property="FontFamily" Value="Raavi"></Setter>
         <Setter Property="FontSize" Value="52"></Setter>
+        <Setter Property="FontWeight" Value="Light"></Setter>
         <Setter Property="TextAlignment" Value="Center"></Setter>
     </Style>
     <Style x:Key="AdressStyle" TargetType="TextBlock" BasedOn="{StaticResource BrownFontColor}">

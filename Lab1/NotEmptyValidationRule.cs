@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Lab1
@@ -14,7 +15,7 @@ namespace Lab1
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            Int16 i = 0;
+            Int16 i;
             try
             {
                 i = Convert.ToInt16(value);
@@ -26,7 +27,11 @@ namespace Lab1
 
             if (i <= MAX)
                 return new ValidationResult(true, String.Empty);
-            else return new ValidationResult(false, "Число превышает норму, проверьте и введите заново");
+            else
+            {
+                MessageBox.Show("Введите число поменьше");
+                return new ValidationResult(false, "Число превышает норму, проверьте и введите заново");
+            }
         }
     }
 }

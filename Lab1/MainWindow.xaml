@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Dictionary1.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Stylesheet.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

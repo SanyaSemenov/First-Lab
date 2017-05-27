@@ -22,26 +22,13 @@ namespace Lab1
         public void Execute(object parameter)
         {
             var apply = parameter as MainWindowViewModel;
-            if (apply.SelectedSubject == null || String.IsNullOrWhiteSpace(apply.SelectedSubject.Name))
-                MessageBox.Show("Пожалуйста, укажите субъект");
-
-            if (apply.SelectedCity == null || String.IsNullOrWhiteSpace(apply.SelectedCity.Name))
-                MessageBox.Show("Пожалуйста, укажите город");
-
-            if (apply.SelectedStreet == null || String.IsNullOrWhiteSpace(apply.SelectedStreet.Name))
-                MessageBox.Show("Пожалуйста, укажите улицу");
-
-            if (apply.HouseNumber == null || apply.HouseNumber == 0)
-                MessageBox.Show("Пжалуйста, укажите номер дома");
-
-            if (apply.HouseBlock == null || apply.HouseBlock == 0)
-                MessageBox.Show("Пожалуйста, укажите номер корпуса (при отсутствии поставьте любое число)");
-
-            if (apply.Flat == null || apply.Flat == 0)
-                MessageBox.Show("Пжалуйста, укажите номер квартиры");
-
-            if (apply.Time != TimeInterval.Daytime && apply.Time != TimeInterval.Morning && apply.Time != TimeInterval.Evening)
-                MessageBox.Show("Пожалуйста, укажите временной интервал");
+            if (apply.SelectedSubject == null || String.IsNullOrWhiteSpace(apply.SelectedSubject.Name) ||
+                apply.SelectedCity == null || String.IsNullOrWhiteSpace(apply.SelectedCity.Name) ||
+                apply.SelectedStreet == null || String.IsNullOrWhiteSpace(apply.SelectedStreet.Name) ||
+                apply.HouseNumber == null || apply.HouseNumber == 0 ||
+                apply.Flat == null || apply.Flat == 0 ||
+                apply.Time != TimeInterval.Daytime && apply.Time != TimeInterval.Morning && apply.Time != TimeInterval.Evening)
+                MessageBox.Show("Проверьте правильность введенных данных и повторите");
 
             else MessageBox.Show("Спасибо! Заявка отправлена");
         }
