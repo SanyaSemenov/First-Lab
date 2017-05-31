@@ -118,4 +118,10 @@
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
     </Style>
+    <Style x:Key="CommentLabel" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        <Setter Property="FontFamily" Value="Arial MS"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
 </ResourceDictionary>

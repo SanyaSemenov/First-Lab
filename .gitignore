@@ -241,3 +241,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /Lab1/DeliveryModel.cs
+/Lab1/Apply.cs
+/Lab1/ApplyViewModel.cs
+/Lab1/DeliveryViewModel.cs

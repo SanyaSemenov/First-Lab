@@ -119,8 +119,7 @@
                     <RowDefinition Height="5*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Style="{StaticResource TitleStyle}">Дополнительно</TextBlock>
-                <Label Target="{Binding ElementName=Comment}" Grid.Row="1" FontSize="14" FontFamily="Arial MS" 
-                       HorizontalAlignment="Left" VerticalAlignment="Bottom">Комментарий</Label>
+                <Label Target="{Binding ElementName=Comment}" Style="{StaticResource CommentLabel}" Grid.Row="1">Комментарий</Label>
                 <TextBox Name="Comment" Grid.Row="2" Style="{StaticResource TextBoxStyle}" SpellCheck.IsEnabled="True" Language="ru-ru"
                          VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding Comment}"/>
             </Grid>
