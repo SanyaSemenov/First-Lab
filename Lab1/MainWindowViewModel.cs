@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-
+using System.Data.SqlClient;
 
 namespace Lab1
 {
@@ -72,9 +72,73 @@ namespace Lab1
         public MainWindowViewModel()
         {
             FillSubjects();
+            //InsertSubjects();
+            //InsertCities();
+            //InsertStreets();
+            //Correlate();
             Confirm = new ConfirmCommand();
             Reset = new ResetCommand();
         }
+
+        /*public void InsertSubjects()
+        {
+            using (SqlConnection Con = new SqlConnection("Server=HOOLIGAN\\SQLEXPRESS;Database=FirstDataBase;Trusted_Connection=True;"))
+            {
+                Con.Open();
+                SqlCommand cmdSubjects = new SqlCommand("SELECT * FROM Subjects s", Con);
+                Subjects = new List<Subject>();
+                var SubjectsReader = cmdSubjects.ExecuteReader();
+                while (SubjectsReader.Read())
+                {
+                    Subjects.Add(new Subject() { Code = (int)SubjectsReader["ID"], Name = (String)SubjectsReader["Name"] });
+                }
+            }
+        }
+        public void InsertCities()
+        {
+            using (SqlConnection Con = new SqlConnection("Server=HOOLIGAN\\SQLEXPRESS;Database=FirstDataBase;Trusted_Connection=True;"))
+            {
+                Con.Open();
+                SqlCommand cmdCity = new SqlCommand("SELECT * FROM Cities c", Con);
+                Cities = new List<City>();
+
+                var CityReader = cmdCity.ExecuteReader();
+                while (CityReader.Read())
+                {
+                    Cities.Add(new City() { Code = (int)CityReader["ID"], Name = (String)CityReader["City"], SubjectID = (int)CityReader["SubjectID"] });
+                }
+            }
+        }
+
+        public void InsertStreets()
+        {
+            using (SqlConnection Con = new SqlConnection("Server=HOOLIGAN\\SQLEXPRESS;Database=FirstDataBase;Trusted_Connection=True;"))
+            {
+                Con.Open();
+                SqlCommand cmdStreet = new SqlCommand("SELECT * FROM Streets t", Con);
+                Streets = new List<Street>();
+                var StreetReader = cmdStreet.ExecuteReader();
+                while (StreetReader.Read())
+                {
+                    Streets.Add(new Street() { Code = (int)StreetReader["ID"], Name = (String)StreetReader["Street"], CityID = (int)StreetReader["CityID"] });
+                }
+            }
+        }
+
+        public void Correlate()
+        {
+            for (int i = 0; i < Cities.Count; i++)
+            {
+                for (int j = 0; j < Subjects.Count; j++)
+                {
+                    if (Cities[i].SubjectID == Subjects[j].Code)
+                    {
+                        Subjects[j].Cities.Add(Cities[i]);
+                    }
+                }
+            }
+        }*/
+
         public void FillSubjects()
         {
             this.Subjects = new List<Subject>()
@@ -242,8 +306,8 @@ namespace Lab1
                 }
             };
 
-            this.SelectedSubject = this.Subjects[3];
-            this.SelectedCity = this.Subjects[3].Cities[0];
+            this.SelectedSubject = this.Subjects[0];
+            this.SelectedCity = this.Subjects[0].Cities[0];
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void DoPropertyChanged(String Name)

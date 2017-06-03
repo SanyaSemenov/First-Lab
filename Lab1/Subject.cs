@@ -8,7 +8,7 @@ namespace Lab1
 {
     public class Subject
     {
-        public Byte Code { get; set; }
+        public Int32 Code { get; set; }
         public String Name { get; set; }
         public List<City> Cities { get; set; }
     }

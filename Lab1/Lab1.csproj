@@ -55,12 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Apply.cs" />
-    <Compile Include="ApplyViewModel.cs" />
     <Compile Include="BoolToEnumConverter.cs" />
     <Compile Include="City.cs" />
     <Compile Include="ConfirmCommand.cs" />
-    <Compile Include="DeliveryViewModel.cs" />
     <Compile Include="NotEmptyValidationRule.cs" />
     <Compile Include="ResetCommand.cs" />
     <Compile Include="Street.cs" />

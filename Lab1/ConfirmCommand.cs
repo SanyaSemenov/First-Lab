@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
+using System.Data.SqlClient;
 
 namespace Lab1
 {
@@ -30,7 +31,18 @@ namespace Lab1
                 apply.Time != TimeInterval.Daytime && apply.Time != TimeInterval.Morning && apply.Time != TimeInterval.Evening)
                 MessageBox.Show("Проверьте правильность введенных данных и повторите");
 
-            else MessageBox.Show("Спасибо! Заявка отправлена");
+            else
+            {
+                using (SqlConnection con = new SqlConnection("Server=HOOLIGAN\\SQLEXPRESS;Database=FirstDataBase;Trusted_Connection=True;"))
+                {
+                    con.Open();
+                    String query = String.Format("INSERT INTO DeliveryReadOnly(Subject, City, Street, House_Number, House_Block, Flat, Time_Interval, Comment) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", apply.SelectedSubject.Name, apply.SelectedCity.Name, apply.SelectedStreet.Name, apply.HouseNumber, apply.HouseBlock, apply.Flat, Convert.ToString(apply.Time), apply.Comment);
+                    SqlCommand cmdSave = new SqlCommand(query, con);
+                    cmdSave.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Спасибо! Заявка отправлена");
+            }
         }
     }
 }
