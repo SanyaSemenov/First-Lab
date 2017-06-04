@@ -36,7 +36,7 @@ namespace Lab1
                 using (SqlConnection con = new SqlConnection("Server=HOOLIGAN\\SQLEXPRESS;Database=FirstDataBase;Trusted_Connection=True;"))
                 {
                     con.Open();
-                    String query = String.Format("INSERT INTO DeliveryReadOnly(Subject, City, Street, House_Number, House_Block, Flat, Time_Interval, Comment) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", apply.SelectedSubject.Name, apply.SelectedCity.Name, apply.SelectedStreet.Name, apply.HouseNumber, apply.HouseBlock, apply.Flat, Convert.ToString(apply.Time), apply.Comment);
+                    String query = String.Format("INSERT INTO DeliveryReadOnly(SubjectID, Subject, CityID, City, StreetID, Street, House_Number, House_Block, Flat, Time_Interval, Comment) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", apply.SelectedSubject.Code, apply.SelectedSubject.Name, apply.SelectedCity.Code, apply.SelectedCity.Name, apply.SelectedStreet.Code, apply.SelectedStreet.Name, apply.HouseNumber, apply.HouseBlock, apply.Flat, Convert.ToString(apply.Time), apply.Comment);
                     SqlCommand cmdSave = new SqlCommand(query, con);
                     cmdSave.ExecuteNonQuery();
                 }

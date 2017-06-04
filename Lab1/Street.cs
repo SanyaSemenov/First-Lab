@@ -12,8 +12,9 @@ namespace Lab1
         public String Name { get; set; }
         public Int32 CityID { get; set; }
         public City CityName { get; set; }
-        public Street(String aName)
+        public Street(Int32 aCode, String aName)
         {
+            Code = aCode;
             Name = aName;
         }
     }
